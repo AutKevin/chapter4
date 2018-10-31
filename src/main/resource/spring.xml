@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--扫描指定包(将带有Component注解的类自动定义为SpringBean)-->
+    <context:component-scan base-package="com.smart4j.framework"/>
+
+    <bean id="greetingImpl" class="com.smart4j.framework.GreetingImpl">
+    </bean>
+
+    <bean id="greetingAroundAdvice" class="com.smart4j.framework.aop.GreetingAroundAdvice">
+    </bean>
+
+
+    <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interfaces" value="com.smart4j.framework.Greeting"/>   <!--需要代理的接口-->
+        <property name="target" ref="greetingImpl"/>   <!--实现接口类-->
+        <property name="interceptorNames">   <!--拦截器名称(也就是增强类名称,SpringBean的Id)-->
+            <list>
+                <value>greetingAroundAdvice</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
