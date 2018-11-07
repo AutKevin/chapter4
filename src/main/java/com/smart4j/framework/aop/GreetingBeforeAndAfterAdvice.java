@@ -6,12 +6,8 @@ import org.springframework.aop.MethodBeforeAdvice;
 import java.lang.reflect.Method;
 
 /**
- * @program: GreetingBeforeAndAfterAdvice
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-10-31 15:22
+ * 环绕增强 - 实现前置增强和后置增强接口
  */
-
 public class GreetingBeforeAndAfterAdvice implements MethodBeforeAdvice,AfterReturningAdvice {
     @Override
     public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {

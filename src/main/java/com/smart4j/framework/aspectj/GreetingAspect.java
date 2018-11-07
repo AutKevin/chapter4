@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: GreetingAspect
- * @description: ${description}
+ * @description: 切面
  * @author: Created by Autumn
  * @create: 2018-11-06 16:54
  */

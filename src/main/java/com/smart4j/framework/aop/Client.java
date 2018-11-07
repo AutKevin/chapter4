@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Client {
     public static void main(String[] args) {
+        /*编程式 - 基于AOP接口*/
         /*ProxyFactory proxyFactory = new ProxyFactory();  //创建代理工厂
         proxyFactory.setTarget(new GreetingImpl());    //摄入目标类对象
         //proxyFactory.addAdvice(new GreetingBeforeAdvice());   //添加前置增强
@@ -24,6 +25,7 @@ public class Client {
         Greeting greeting = (Greeting) proxyFactory.getProxy();
         greeting.sayHello("Jack");*/
 
+        /*声明式 - 手工代理*/
         /*ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
         Greeting greeting = (Greeting) context.getBean("greetingProxy");  //从Context中根据id获取Bean对象(其实也就是一个代理)
         greeting.sayHello("jack");   //调用代理方法*/
@@ -38,7 +40,7 @@ public class Client {
         greeting.goodMorning("Jhon");
         greeting.goodNight("Sawer");*/
 
-        /*自动扫描Bean名称*/
+        /*自动扫描 - Bean名称*/
         ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
         GreetingImpl greeting = (GreetingImpl) context.getBean("greetingImpl");  //从Context中根据id获取Bean对象(自动扫描的id为首字母小写的类名)
         greeting.sayHello("jack");

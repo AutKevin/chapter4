@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * @program: Tag
- * @description: ${description}
+ * @description: 切点 - 有此注解的方法
  * @author: Created by Autumn
  * @create: 2018-11-07 12:57
  */

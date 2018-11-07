@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 
 /**
- * @program: GreetingAroundAdvice
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-10-31 15:27
+ * 环绕增强
  */
 @Component
 public class GreetingAroundAdvice implements MethodInterceptor {

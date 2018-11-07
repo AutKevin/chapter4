@@ -5,10 +5,7 @@ import org.springframework.aop.support.DelegatingIntroductionInterceptor;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: GreetingIntroAdvice
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-11-06 09:42
+ * 引用增强 - 需增强接口的实现类
  */
 @Component
 public class GreetingIntroAdvice extends DelegatingIntroductionInterceptor implements Apology{

@@ -46,31 +46,30 @@
 
     <!--自动代理 - 扫描Bean名称-->
     <!--<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-        <property name="beanNames" value="*Impl"/>   &lt;!&ndash;为后缀是Impl的Bean生成代理&ndash;&gt;
+        <property name="beanNames" value="*Impl"/>   &lt;!&ndash;切点为类，为后缀是Impl的Bean生成代理&ndash;&gt;
         <property name="interceptorNames" value="greetingAroundAdvice"/>   &lt;!&ndash;增强(这里没用切面)&ndash;&gt;
         <property name="optimize" value="true"/>   &lt;!&ndash;是否对代理生成策略进行优化&ndash;&gt;
     </bean>-->
 
     <!--自动代理 - 扫描切面配置-->
     <!--<bean id="greetingAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-        <property name="pattern" value="com.smart4j.framework.GreetingImpl.good.*"/>
+        <property name="pattern" value="com.smart4j.framework.GreetingImpl.good.*"/>   &lt;!&ndash;切点为表达式&ndash;&gt;
         <property name="advice" ref="greetingAroundAdvice"/>
     </bean>
-
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
-        <property name="optimize" value="true" />
+        <property name="optimize" value="true" />     &lt;!&ndash;为true时，则可对代理生成策略进行优化。该类有接口，就代理接口（JDK动态代理）；没有接口，就代理类（使用CGLib动态代理）&ndash;&gt;
     </bean>-->
 
-    <!--AspectJ-->
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--AspectJ - 基于注解-->
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
     <!--AspectJ - 基于配置-->
-    <bean id="greetingImpl" class="com.smart4j.framework.GreetingImpl"/>
+    <!--<bean id="greetingImpl" class="com.smart4j.framework.GreetingImpl"/>
     <bean id="greetingAspect" class="com.smart4j.framework.aspectj.GreetingAspect"/>
 
     <aop:config>
         <aop:aspect ref="greetingAspect">
             <aop:around method="around" pointcut="execution(* com.smart4j.framework.GreetingImpl.*(..))"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
 </beans>

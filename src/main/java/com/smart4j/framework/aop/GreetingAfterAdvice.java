@@ -5,12 +5,8 @@ import org.springframework.aop.AfterReturningAdvice;
 import java.lang.reflect.Method;
 
 /**
- * @program: GreetingBeforeAdvice
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-10-31 15:01
+ * 后置增强
  */
-
 public class GreetingAfterAdvice implements AfterReturningAdvice {
 
     @Override

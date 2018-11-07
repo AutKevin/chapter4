@@ -1,10 +1,7 @@
 package com.smart4j.framework.aop;
 
 /**
- * @program: Apology
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-11-06 09:40
+ * 引用增强 - 需增强功能的接口
  */
 public interface Apology {
     void saySorry(String name);

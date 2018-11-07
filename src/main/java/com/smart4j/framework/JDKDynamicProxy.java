@@ -5,12 +5,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * @program: JDKDynamicProxy
- * @description: JDK动态代理
- * @author: Created by Autumn
- * @create: 2018-10-30 17:21
+ * JDK动态代理
  */
-
 public class JDKDynamicProxy implements InvocationHandler {
     private Object target;
 

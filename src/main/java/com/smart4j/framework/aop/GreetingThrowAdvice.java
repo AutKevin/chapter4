@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 
 /**
- * @program: GreetingThrowAdvice
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-11-05 16:57
+ * 抛出增强
  */
 @Component
 public class GreetingThrowAdvice implements ThrowsAdvice {

@@ -1,12 +1,8 @@
 package com.smart4j.framework;
 
 /**
- * @program: GreetingProxy
- * @description: 静态代理
- * @author: Created by Autumn
- * @create: 2018-10-30 17:12
+ * 静态代理
  */
-
 public class GreetingProxy implements Greeting {
     private GreetingImpl greetingImpl;
 

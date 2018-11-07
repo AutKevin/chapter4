@@ -1,12 +1,8 @@
 package com.smart4j.framework;
 
 /**
- * @program: Client
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-10-30 17:17
+ * 调用静态代理、动态代理、CGLib动态代理
  */
-
 public class Client {
     public static void main(String[] args) {
         //静态代理

@@ -7,12 +7,8 @@ import net.sf.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * @program: CGLibDynamicProxy
- * @description: CGLib动态代理 - 单例模式
- * @author: Created by Autumn
- * @create: 2018-10-31 10:01
+ * CGLib动态代理 - 单例模式
  */
-
 public class CGLibDynamicProxy implements MethodInterceptor{
 
     //单例模式
