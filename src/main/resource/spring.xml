@@ -2,29 +2,75 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--扫描指定包(将带有Component注解的类自动定义为SpringBean)-->
     <context:component-scan base-package="com.smart4j.framework"/>
 
-    <bean id="greetingImpl" class="com.smart4j.framework.GreetingImpl">
-    </bean>
-
-    <bean id="greetingAroundAdvice" class="com.smart4j.framework.aop.GreetingAroundAdvice">
-    </bean>
-
-
-    <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="interfaces" value="com.smart4j.framework.Greeting"/>   <!--需要代理的接口-->
-        <property name="target" ref="greetingImpl"/>   <!--实现接口类-->
-        <property name="interceptorNames">   <!--拦截器名称(也就是增强类名称,SpringBean的Id)-->
+    <!--织入增强(方法增强:前后环绕抛出)-->
+   <!-- <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="com.smart4j.framework.Greeting"/>   &lt;!&ndash;需要代理的接口&ndash;&gt;
+        <property name="targetName" value="greetingImpl"/>   &lt;!&ndash;实现接口类&ndash;&gt;
+        <property name="interceptorNames">   &lt;!&ndash;拦截器名称(也就是增强类名称,SpringBean的Id)&ndash;&gt;
             <list>
-                <value>greetingAroundAdvice</value>
+               &lt;!&ndash; <value>greetingAroundAdvice</value>&ndash;&gt;
+                <value>greetingThrowAdvice</value>
             </list>
         </property>
+    </bean>-->
+
+    <!--引入增强-->
+    <!--<bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="com.smart4j.framework.aop.Apology"/>   &lt;!&ndash;需要动态实现的接口&ndash;&gt;
+        <property name="targetName" value="greetingImpl"/>   &lt;!&ndash;目标类&ndash;&gt;
+        <property name="interceptorNames" value="greetingIntroAdvice"/>   &lt;!&ndash;拦截器名称(也就是增强类名称,SpringBean的Id)&ndash;&gt;
+        <property name="proxyTargetClass" value="true"/>   &lt;!&ndash;代理目标类，（默认为false,代理接口）&ndash;&gt;
+    </bean>-->
+
+    <!--切面-->
+    <!--配置一个切面-->
+    <!--<bean id="greetingAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="greetingAroundAdvice"/>  &lt;!&ndash;增强&ndash;&gt;
+        <property name="pattern" value="com.smart4j.framework.GreetingImpl.good.*"/>    &lt;!&ndash;切点(正则表达式)&ndash;&gt;
+    </bean>
+    &lt;!&ndash;配置一个代理类&ndash;&gt;
+    <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="targetName" value="greetingImpl"/>   &lt;!&ndash;目标类&ndash;&gt;
+        <property name="interceptorNames" value="greetingAdvisor"/>   &lt;!&ndash;切面(替换之前的拦截器名称)&ndash;&gt;
+        <property name="proxyTargetClass" value="true"/>   &lt;!&ndash;代理目标类，（默认为false,代理接口）&ndash;&gt;
+    </bean>-->
+
+    <!--自动代理 - 扫描Bean名称-->
+    <!--<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames" value="*Impl"/>   &lt;!&ndash;为后缀是Impl的Bean生成代理&ndash;&gt;
+        <property name="interceptorNames" value="greetingAroundAdvice"/>   &lt;!&ndash;增强(这里没用切面)&ndash;&gt;
+        <property name="optimize" value="true"/>   &lt;!&ndash;是否对代理生成策略进行优化&ndash;&gt;
+    </bean>-->
+
+    <!--自动代理 - 扫描切面配置-->
+    <!--<bean id="greetingAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="pattern" value="com.smart4j.framework.GreetingImpl.good.*"/>
+        <property name="advice" ref="greetingAroundAdvice"/>
     </bean>
 
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <property name="optimize" value="true" />
+    </bean>-->
+
+    <!--AspectJ-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!--AspectJ - 基于配置-->
+    <bean id="greetingImpl" class="com.smart4j.framework.GreetingImpl"/>
+    <bean id="greetingAspect" class="com.smart4j.framework.aspectj.GreetingAspect"/>
+
+    <aop:config>
+        <aop:aspect ref="greetingAspect">
+            <aop:around method="around" pointcut="execution(* com.smart4j.framework.GreetingImpl.*(..))"/>
+        </aop:aspect>
+    </aop:config>
 </beans>

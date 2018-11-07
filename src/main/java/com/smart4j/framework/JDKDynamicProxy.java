@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 
 /**
  * @program: JDKDynamicProxy
- * @description: ${description}
+ * @description: JDK动态代理
  * @author: Created by Autumn
  * @create: 2018-10-30 17:21
  */

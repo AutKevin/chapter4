@@ -16,7 +16,7 @@ public class Client {
         /*Greeting greeting = new JDKDynamicProxy(new GreetingImpl()).getProxy();
         greeting.sayHello("Jack");*/
         //CGLib动态代理
-        Greeting greeting = CGLibDynamicProxy.getInstance().getProxy(GreetingImpl.class);
+        GreetingImpl greeting = CGLibDynamicProxy.getInstance().getProxy(GreetingImpl.class);
         greeting.sayHello("Jack");
     }
 }

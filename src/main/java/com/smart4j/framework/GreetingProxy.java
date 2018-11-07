@@ -2,7 +2,7 @@ package com.smart4j.framework;
 
 /**
  * @program: GreetingProxy
- * @description: ${description}
+ * @description: 静态代理
  * @author: Created by Autumn
  * @create: 2018-10-30 17:12
  */

@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 
 /**
  * @program: CGLibDynamicProxy
- * @description: ${description}
+ * @description: CGLib动态代理 - 单例模式
  * @author: Created by Autumn
  * @create: 2018-10-31 10:01
  */
