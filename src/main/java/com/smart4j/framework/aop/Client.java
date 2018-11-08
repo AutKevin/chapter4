@@ -7,10 +7,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * @program: Client
- * @description: ${description}
- * @author: Created by Autumn
- * @create: 2018-10-31 15:06
+ * Spring AOP
+ * 编程式
+ * 声明式
+ *    手工代理
+ *    自动代理
+ *         扫描Bean名称
+ *         扫描切面配置
  */
 
 public class Client {
@@ -40,7 +43,7 @@ public class Client {
         greeting.goodMorning("Jhon");
         greeting.goodNight("Sawer");*/
 
-        /*自动扫描 - Bean名称*/
+        /*自动扫描 - Bean名称/切面配置*/
         ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
         GreetingImpl greeting = (GreetingImpl) context.getBean("greetingImpl");  //从Context中根据id获取Bean对象(自动扫描的id为首字母小写的类名)
         greeting.sayHello("jack");
