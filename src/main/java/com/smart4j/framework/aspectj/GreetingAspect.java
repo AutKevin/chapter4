@@ -8,13 +8,9 @@ import org.aspectj.lang.annotation.DeclareParents;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: GreetingAspect
- * @description: 切面
- * @author: Created by Autumn
- * @create: 2018-11-06 16:54
+ * 切面
  */
-
-@Aspect    /*切面*/
+@Aspect
 @Component
 public class GreetingAspect {
 

@@ -6,12 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: Tag
- * @description: 切点 - 有此注解的方法
- * @author: Created by Autumn
- * @create: 2018-11-07 12:57
+ * 切点 - 有此注解的方法
  */
-
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Tag {
