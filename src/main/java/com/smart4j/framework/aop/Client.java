@@ -29,9 +29,9 @@ public class Client {
         greeting.sayHello("Jack");*/
 
         /*声明式 - 手工代理*/
-        /*ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
+        ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
         Greeting greeting = (Greeting) context.getBean("greetingProxy");  //从Context中根据id获取Bean对象(其实也就是一个代理)
-        greeting.sayHello("jack");   //调用代理方法*/
+        greeting.sayHello("jack");   //调用代理方法
         //引入增强
         /*Apology apology = (Apology) greeting;   //将目标类增强向上转型为Apology接口(这是引入增强给我们带来的特性,也是"接口动态实现"功能)
         apology.saySorry("jack");*/
@@ -44,10 +44,10 @@ public class Client {
         greeting.goodNight("Sawer");*/
 
         /*自动扫描 - Bean名称/切面配置*/
-        ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
+        /*ApplicationContext context = new ClassPathXmlApplicationContext("/spring.xml");  //获取Spring Context
         GreetingImpl greeting = (GreetingImpl) context.getBean("greetingImpl");  //从Context中根据id获取Bean对象(自动扫描的id为首字母小写的类名)
         greeting.sayHello("jack");
         greeting.goodMorning("Jhon");
-        greeting.goodNight("Sawer");
+        greeting.goodNight("Sawer");*/
     }
 }
