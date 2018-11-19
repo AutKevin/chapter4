@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 @Aspect(Controller.class)
 public class ControllerAspect extends AspectProxy{
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerAspect.class);
-    private long begin;
+    private long begin;    //方法开始时间
 
     /**
      * 前置增强
