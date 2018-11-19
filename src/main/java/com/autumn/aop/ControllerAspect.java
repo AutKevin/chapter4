@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 @Aspect(Controller.class)
 public class ControllerAspect extends AspectProxy{
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerAspect.class);
-
     private long begin;
 
     /**
@@ -24,9 +23,10 @@ public class ControllerAspect extends AspectProxy{
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Throwable {
         LOGGER.debug("---------begin---------");
-        LOGGER.debug(String.format("Class: %s",cls.));
+        LOGGER.debug(String.format("class: %s",cls.getName()));
+        LOGGER.debug(String.format("method: %s",method.getName()));
+        begin = System.currentTimeMillis();
     }
-
     /**
      * 后置增强
      * @param cls    目标类
@@ -35,6 +35,7 @@ public class ControllerAspect extends AspectProxy{
      */
     @Override
     public void after(Class<?> cls, Method method, Object result) throws Throwable {
-        super.after(cls, method, result);
+        LOGGER.debug(String.format("time: %ds",System.currentTimeMillis()-begin));
+        LOGGER.debug("---------end---------");
     }
 }
