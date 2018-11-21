@@ -26,11 +26,11 @@
             <version>2.2</version>
         </dependency>
         <!--CGLib依赖此包-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
             <version>6.2</version>
-        </dependency>
+        </dependency>-->
         <!--Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -48,6 +48,15 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.7.1</version>
+        </dependency>
+        <!--slf4j-->
+        <!--最流行的Log4j日志框架，只是一种具体实现，如果将来需要使用其他更好的日志框架，
+        岂不是代码中很多日志输出的地方都需要修改？为了解决这个问题，我们使用一个名为SLF4J的日志框架，它实际上是日志框架的借口
+        而Log4j注释日志框架的一种实现而已。只需添加以下依赖，就能同时引入SLF4J与Log4j两个依赖-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
         </dependency>
     </dependencies>
 
