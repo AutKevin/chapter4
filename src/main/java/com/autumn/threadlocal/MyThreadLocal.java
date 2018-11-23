@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * @program: MyThreadLocal
- * @description: ${description}
+ * @description: 模式ThreadLocal
  * @author: Created by Autumn
  * @create: 2018-11-21 17:09
  */
